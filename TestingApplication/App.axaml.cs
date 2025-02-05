@@ -1,7 +1,9 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using TestingApplication.ViewModels;
 using TestingApplication.Views;
 
@@ -16,6 +18,8 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        IServiceProvider services = ConfigureServices();
+        var mainViewModel = services.GetRequiredService<MainViewModel>();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow
@@ -33,4 +37,13 @@ public partial class App : Application
 
         base.OnFrameworkInitializationCompleted();
     }
-}
+
+    private static ServiceProvider ConfigureServices()
+    {
+        var services = new ServiceCollection();
+
+        services.AddSingleton<MainViewModel>();
+
+        return services.BuildServiceProvider();
+    }
+ }
