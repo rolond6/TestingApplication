@@ -12,5 +12,30 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <SplitView IsPaneOpen="{Binding IsPaneOpen}"
+             OpenPaneLength="300"
+             CompactPaneLength="48"
+             DisplayMode="CompactInline">
+    <SplitView.Pane>
+      <StackPanel>
+        <Button HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Background="Transparent" Command="{Binding PaneOpenCloseCommand}">
+          ---
+        </Button>
+        <StackPanel>
+          <Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="48" Background="Transparent" Command="{Binding OpenPage}" CommandParameter="Home">
+            <StackPanel Orientation="Horizontal">
+              
+              <TextBlock Margin="10" Text="Главная"/>
+            </StackPanel>
+          </Button>
+        </StackPanel>
+
+      </StackPanel>
+    </SplitView.Pane>
+    <SplitView.Content>
+      <Border CornerRadius="12 0 0 0">
+        <TransitioningContentControl Content="{Binding CurrentPage}"/>
+      </Border>
+    </SplitView.Content>
+  </SplitView>
 </UserControl>

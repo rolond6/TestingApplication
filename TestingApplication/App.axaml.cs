@@ -4,7 +4,9 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using TestingApplication.Helpers;
 using TestingApplication.ViewModels;
+using TestingApplication.ViewModels.Pages;
 using TestingApplication.Views;
 
 namespace TestingApplication;
@@ -42,7 +44,11 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
 
+        services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new(t => (ViewModelBase)s.GetRequiredService(t)));
+
         services.AddSingleton<MainViewModel>();
+
+        services.AddTransient<HomeViewModel>();
 
         return services.BuildServiceProvider();
     }
