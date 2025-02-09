@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TestingApplication.Views.Pages.DatabaseView">
+  <Grid>
+    <Grid RowDefinitions="auto,*,auto">
+      <Label Grid.Row="0" Margin="4">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock VerticalAlignment="Center" Text="Управление данными" FontSize="24"/>
+        </StackPanel>
+      </Label>
+      <UniformGrid Grid.Row="1" Columns="4" Rows="4">
+        <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Command="{Binding OpenPage}" CommandParameter="Questions">
+          <Grid>
+            <TextBlock FontSize="20">Вопросы</TextBlock>
+          </Grid>
+        </Button>
+        <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Command="{Binding OpenPage}" CommandParameter="AnswerToQuestions">
+          <Grid>
+            <TextBlock FontSize="20">Ответы на вопросы</TextBlock>
+          </Grid>
+        </Button>
+        <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                Command="{Binding OpenPage}" CommandParameter="Answers">
+          <Grid>
+            <TextBlock FontSize="20">Ответы</TextBlock>
+          </Grid>
+        </Button>
+      </UniformGrid>
+    </Grid>
+  </Grid>
+</UserControl>

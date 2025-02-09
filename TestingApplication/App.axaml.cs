@@ -4,9 +4,12 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using TestingApplication.Data.Repositories.Interfaces;
+using TestingApplication.Data.Repositories.SQLite;
 using TestingApplication.Helpers;
 using TestingApplication.ViewModels;
 using TestingApplication.ViewModels.Pages;
+using TestingApplication.ViewModels.Pages.Database.Viewers;
 using TestingApplication.Views;
 
 namespace TestingApplication;
@@ -46,9 +49,24 @@ public partial class App : Application
 
         services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new(t => (ViewModelBase)s.GetRequiredService(t)));
 
+        // Репозитории
+        services.AddSingleton<IAnswersRepository, SQLiteAnswersRepository>();
+        services.AddSingleton<IAnswerToQuestionsRepository, SQLiteAnswerToQuestionsRepository>();
+        services.AddSingleton<IQuestionsRepository, SQLiteQuestionsRepository>();
+        services.AddSingleton<IQuestionsTypesRepository, SQLiteQuestionsTypesRepository>();
+
+        // Модели
+
+
+        // Главное окно
         services.AddSingleton<MainViewModel>();
 
+        // Модели предствления
         services.AddTransient<HomeViewModel>();
+        services.AddTransient<DatabaseViewModel>();
+        services.AddTransient<AnswersViewModel>();
+        services.AddTransient<QuestionsViewModel>();
+        services.AddTransient<AnswerToQuestionsViewModel>();
 
         return services.BuildServiceProvider();
     }

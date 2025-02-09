@@ -21,10 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\DataContexts\" />
-    <Folder Include="Data\Entities\" />
-    <Folder Include="Data\Repositories\Interfaces\" />
-    <Folder Include="Data\Repositories\SQLite\" />
     <Folder Include="Models\" />
+    <Folder Include="ViewModels\Pages\Database\Editors\" />
+    <Folder Include="Views\Pages\Database\Editors\" />
+    <Folder Include="Views\Pages\Database\Viewers\" />
   </ItemGroup>
 </Project>

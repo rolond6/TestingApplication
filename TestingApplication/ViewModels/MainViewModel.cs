@@ -52,6 +52,9 @@ public class MainViewModel : ViewModelBase
                 case "Home": 
                     _router.GoTo<HomeViewModel>();
                     break;
+                case "Database":
+                    _router.GoTo<DatabaseViewModel>();
+                    break;
             }
         }
     }

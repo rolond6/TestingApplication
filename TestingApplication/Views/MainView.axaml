@@ -24,8 +24,12 @@
         <StackPanel>
           <Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="48" Background="Transparent" Command="{Binding OpenPage}" CommandParameter="Home">
             <StackPanel Orientation="Horizontal">
-              
               <TextBlock Margin="10" Text="Главная"/>
+            </StackPanel>
+          </Button>
+          <Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="48" Background="Transparent" Command="{Binding OpenPage}" CommandParameter="Database">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Margin="10" Text="База данных"/>
             </StackPanel>
           </Button>
         </StackPanel>
