@@ -13,7 +13,7 @@ namespace TestingApplication.Helpers
     {
         private Dictionary<string, Type> _list = new Dictionary<string, Type>();
 
-        public void RegisterViewModels()
+        public void RegisterByViewModelBase()
         {
             var assembly = Assembly.GetAssembly(typeof(ViewModelBase));
             if (assembly != null)

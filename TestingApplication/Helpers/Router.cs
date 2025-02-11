@@ -17,7 +17,7 @@ namespace TestingApplication.Helpers
         public Router(Func<Type, ViewModelBase> createViewModel)
         {
             _routes = new Routes();
-            _routes.RegisterViewModels();
+            _routes.RegisterByViewModelBase();
 
             CreateViewModel = createViewModel;
         }
