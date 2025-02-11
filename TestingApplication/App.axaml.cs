@@ -47,7 +47,7 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
 
-        services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new(t => (ViewModelBase)s.GetRequiredService(t)));
+        services.AddSingleton<HistoryRouter>(s => new(t => (ViewModelBase)s.GetRequiredService(t)));
 
         // Репозитории
         services.AddSingleton<IAnswersRepository, SQLiteAnswersRepository>();

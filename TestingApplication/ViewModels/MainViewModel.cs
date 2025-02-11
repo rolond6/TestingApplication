@@ -10,7 +10,7 @@ public class MainViewModel : ViewModelBase
 {
     private bool _isPaneOpen;
     private ViewModelBase? _currentPage;
-    private HistoryRouter<ViewModelBase>? _router;
+    private HistoryRouter? _router;
 
     public bool IsPaneOpen
     {
@@ -32,14 +32,14 @@ public class MainViewModel : ViewModelBase
         OpenPage = ReactiveCommand.Create<string>(ExecuteOpenPage);
     }
 
-    public MainViewModel(HistoryRouter<ViewModelBase>? router) : this()
+    public MainViewModel(HistoryRouter? router) : this()
     {
         _router = router;
 
         if (_router != null)
         {
             _router.CurrentViewModelChanged += (viewModel) => CurrentPage = viewModel;
-            _router.GoTo<HomeViewModel>();
+            _router.GoTo("Home");
         }
     }
 
@@ -47,15 +47,7 @@ public class MainViewModel : ViewModelBase
     {
         if (_router != null)
         {
-            switch (pageName)
-            {
-                case "Home": 
-                    _router.GoTo<HomeViewModel>();
-                    break;
-                case "Database":
-                    _router.GoTo<DatabaseViewModel>();
-                    break;
-            }
+            _router.GoTo(pageName);
         }
     }
 

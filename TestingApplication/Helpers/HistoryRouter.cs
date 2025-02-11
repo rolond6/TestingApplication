@@ -4,20 +4,21 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingApplication.ViewModels;
 
 namespace TestingApplication.Helpers
 {
-    public class HistoryRouter<TViewModelBase> : Router<TViewModelBase> where TViewModelBase : class
+    public class HistoryRouter : Router
     {
 
         private int _historyIndex = -1;
-        private List<TViewModelBase> _history = new();
+        private List<ViewModelBase> _history = new();
         private readonly uint _historyMaxSize = 100;
 
         public bool HasNext => _history.Count > 0 && _historyIndex < _history.Count - 1;
         public bool HasPrev => _historyIndex > 0;
 
-        public HistoryRouter(Func<Type, TViewModelBase> createViewModel) : base(createViewModel)
+        public HistoryRouter(Func<Type, ViewModelBase> createViewModel) : base(createViewModel)
         {
         }
 
@@ -25,7 +26,7 @@ namespace TestingApplication.Helpers
         // popState
         // replaceState
 
-        public void Push(TViewModelBase item)
+        public void Push(ViewModelBase item)
         {
             if (HasNext)
             {
@@ -39,7 +40,7 @@ namespace TestingApplication.Helpers
             }
         }
 
-        public TViewModelBase? Go(int offset = 0)
+        public ViewModelBase? Go(int offset = 0)
         {
             if (offset == 0)
             {
@@ -57,17 +58,21 @@ namespace TestingApplication.Helpers
             return viewModel;
         }
 
-        public TViewModelBase? Back() => HasPrev ? Go(-1) : default;
+        public ViewModelBase? Back() => HasPrev ? Go(-1) : default;
 
-        public TViewModelBase? Forward() => HasNext ? Go(1) : default;
+        public ViewModelBase? Forward() => HasNext ? Go(1) : default;
 
-
-        public override T GoTo<T>()
+        public override ViewModelBase GoTo(Type type)
         {
-            var destination = InstantiateViewModel<T>();
-            CurrentViewModel = destination;
-            Push(destination);
-            return destination;
+            ViewModelBase viewModel = base.GoTo(type);
+            Push(viewModel);
+            return viewModel;
+        }
+        public override ViewModelBase GoTo(string name)
+        {
+            ViewModelBase viewModel = base.GoTo(name);
+            Push(viewModel);
+            return viewModel;
         }
     }
 }

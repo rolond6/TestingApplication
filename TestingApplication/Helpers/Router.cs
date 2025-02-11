@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingApplication.ViewModels;
 
 namespace TestingApplication.Helpers
 {
-    public class Router<TViewModelBase> where TViewModelBase : class
+    public class Router
     {
+        private Routes _routes;
+        private ViewModelBase _currentViewModel = default!;
+        protected readonly Func<Type, ViewModelBase> CreateViewModel;
+        public event Action<ViewModelBase>? CurrentViewModelChanged;
 
-        private TViewModelBase _currentViewModel = default!;
-        protected readonly Func<Type, TViewModelBase> CreateViewModel;
-        public event Action<TViewModelBase>? CurrentViewModelChanged;
-
-        public Router(Func<Type, TViewModelBase> createViewModel)
+        public Router(Func<Type, ViewModelBase> createViewModel)
         {
+            _routes = new Routes();
+            _routes.RegisterViewModels();
+
             CreateViewModel = createViewModel;
         }
 
-        protected TViewModelBase CurrentViewModel
+        protected ViewModelBase CurrentViewModel
         {
             set
             {
@@ -28,21 +32,28 @@ namespace TestingApplication.Helpers
             }
         }
 
-        private void OnCurrentViewModelChanged(TViewModelBase viewModel)
+        private void OnCurrentViewModelChanged(ViewModelBase viewModel)
         {
             CurrentViewModelChanged?.Invoke(viewModel);
         }
 
-        public virtual T GoTo<T>() where T : TViewModelBase
+        public virtual ViewModelBase GoTo(Type type)
         {
-            var viewModel = InstantiateViewModel<T>();
+            var viewModel = InstantiateViewModel(type);
             CurrentViewModel = viewModel;
             return viewModel;
         }
 
-        protected T InstantiateViewModel<T>() where T : TViewModelBase
+        public virtual ViewModelBase GoTo(string name)
         {
-            return (T)Convert.ChangeType(CreateViewModel(typeof(T)), typeof(T));
+            Type type = _routes.GetViewModel(name);
+            var viewModel = InstantiateViewModel(type);
+            CurrentViewModel = viewModel;
+            return viewModel;
+        }
+        protected ViewModelBase InstantiateViewModel(Type type)
+        {
+            return (ViewModelBase)Convert.ChangeType(CreateViewModel(type), type);
         }
 
     }

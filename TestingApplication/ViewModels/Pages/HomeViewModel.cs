@@ -11,7 +11,7 @@ namespace TestingApplication.ViewModels.Pages
 {
     internal class HomeViewModel: ViewModelBase
     {
-        private HistoryRouter<ViewModelBase>? _router;
+        private HistoryRouter? _router;
 
         public ReactiveCommand<string, Unit> OpenPage { get; }
 
@@ -20,7 +20,7 @@ namespace TestingApplication.ViewModels.Pages
             OpenPage = ReactiveCommand.Create<string>(ExecuteOpenPage);
         }
 
-        public HomeViewModel(HistoryRouter<ViewModelBase>? router) : this()
+        public HomeViewModel(HistoryRouter? router) : this()
         {
             _router = router;
         }
@@ -29,15 +29,7 @@ namespace TestingApplication.ViewModels.Pages
         {
             if (_router != null)
             {
-                switch (pageName)
-                {
-                    case "Home":
-                        _router.GoTo<HomeViewModel>();
-                        break;
-                    case "Database":
-                        _router.GoTo<DatabaseViewModel>();
-                        break;
-                }
+                _router.GoTo(pageName);
             }
         }
     }
