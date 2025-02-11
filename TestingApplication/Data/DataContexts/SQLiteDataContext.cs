@@ -15,6 +15,7 @@ namespace TestingApplication.Data.DataContexts
         public DbSet<Answer> Answers { get; set; } = null!;
         public DbSet<AnswerToQuestion> AnswerToQuestions { get; set; } = null!;
         public DbSet<Question> Questions { get; set; } = null!;
+        public DbSet<Test> Tests { get; set; } = null!;
         public DbSet<QuestionsType> QuestionsTypes { get; set; } = null!;
 
         public SQLiteDataContext()

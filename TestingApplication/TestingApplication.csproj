@@ -24,6 +24,9 @@
     <Folder Include="Models\" />
     <Folder Include="ViewModels\Pages\Database\Editors\" />
     <Folder Include="Views\Pages\Database\Editors\" />
-    <Folder Include="Views\Pages\Database\Viewers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Pages\Database\Viewers\AnswersView.axaml" />
   </ItemGroup>
 </Project>

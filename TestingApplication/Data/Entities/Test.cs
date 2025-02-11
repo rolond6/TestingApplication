@@ -7,13 +7,10 @@ using TestingApplication.Data.Entities.Interfaces;
 
 namespace TestingApplication.Data.Entities
 {
-    internal class Question : IQuestion
+    internal class Test : ITest
     {
         public Guid Id => throw new NotImplementedException();
 
         public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Guid TestId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Guid TypeId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

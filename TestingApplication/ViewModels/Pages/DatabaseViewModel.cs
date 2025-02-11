@@ -41,6 +41,9 @@ namespace TestingApplication.ViewModels.Pages
                     case "Answers":
                         _router.GoTo<AnswersViewModel>();
                         break;
+                    case "Tests":
+                        _router.GoTo<TestsViewModel>();
+                        break;
                 }
             }
         }

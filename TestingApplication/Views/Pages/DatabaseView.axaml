@@ -33,6 +33,12 @@
             <TextBlock FontSize="20">Ответы</TextBlock>
           </Grid>
         </Button>
+        <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Command="{Binding OpenPage}" CommandParameter="Tests">
+          <Grid>
+            <TextBlock FontSize="20">Название тестов</TextBlock>
+          </Grid>
+        </Button>
       </UniformGrid>
     </Grid>
   </Grid>

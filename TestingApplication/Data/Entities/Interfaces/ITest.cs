@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace TestingApplication.Data.Entities.Interfaces
 {
-    internal interface IQuestion
+    internal interface ITest
     {
         Guid Id { get; }
         string Name { get; set; }
-        string Description { get; set; }
-        Guid TestId { get; set; }
-        Guid TypeId { get; set; }
     }
 }

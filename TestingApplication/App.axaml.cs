@@ -66,6 +66,7 @@ public partial class App : Application
         services.AddTransient<DatabaseViewModel>();
         services.AddTransient<AnswersViewModel>();
         services.AddTransient<QuestionsViewModel>();
+        services.AddTransient<TestsViewModel>();
         services.AddTransient<AnswerToQuestionsViewModel>();
 
         return services.BuildServiceProvider();
