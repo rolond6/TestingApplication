@@ -8,7 +8,7 @@ namespace TestingApplication.Data.Entities.Interfaces
 {
     internal interface IQuestionsType
     {
-        Guid Id { get; }
+        int Id { get; set; }
         string Name { get; set; }
     }
 }

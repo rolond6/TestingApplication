@@ -8,10 +8,10 @@ namespace TestingApplication.Data.Entities.Interfaces
 {
     internal interface IQuestion
     {
-        Guid Id { get; }
+        int Id { get; set; }
         string Name { get; set; }
         string Description { get; set; }
-        Guid TestId { get; set; }
-        Guid TypeId { get; set; }
+        int? TestId { get; set; }
+        int? TypeId { get; set; }
     }
 }

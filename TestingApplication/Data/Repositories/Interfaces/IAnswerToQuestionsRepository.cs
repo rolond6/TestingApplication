@@ -8,7 +8,7 @@ using TestingApplication.Data.Entities.Interfaces;
 
 namespace TestingApplication.Data.Repositories.Interfaces
 {
-    internal interface IAnswerToQuestionsRepository : IBaseRepository<AnswerToQuestion>
+    internal interface IAnswerToQuestionsRepository : IGenericRepository<AnswerToQuestion>
     {
     }
 }

@@ -4,5 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="TestingApplication.Views.Pages.Database.Viewers.AnswersView">
-  Welcome to Avalonia!
+  <Grid>
+    <Grid RowDefinitions="auto,auto,*,auto">
+      <Label Grid.Row="0" Margin="2">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock VerticalAlignment="Center" Text="Ответы" FontSize="24"/>
+        </StackPanel>
+      </Label>
+      <StackPanel Grid.Row="1" Margin="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <TextBox Margin="2" Width="256"/>
+        <Button Margin="2">Найти</Button>
+      </StackPanel>
+      <ListBox Grid.Row="2" Margin="2">
+        
+      </ListBox>
+      <StackPanel Grid.Row="3" Margin="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <Button Margin="2">Добавить</Button>
+        <Button Margin="2">Редактировать</Button>
+        <Button Margin="2">Удалить</Button>
+      </StackPanel>
+    </Grid>
+  </Grid>
 </UserControl>

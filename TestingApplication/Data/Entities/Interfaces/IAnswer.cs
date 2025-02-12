@@ -8,9 +8,9 @@ namespace TestingApplication.Data.Entities.Interfaces
 {
     internal interface IAnswer
     {
-        Guid Id { get; }
+        int Id { get; set; }
         string Name { get; set; }
-        string Description { get; set; }
+        string? Description { get; set; }
 
     }
 }

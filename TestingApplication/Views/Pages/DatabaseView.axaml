@@ -24,7 +24,7 @@
         <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Command="{Binding OpenPage}" CommandParameter="AnswerToQuestions">
           <Grid>
-            <TextBlock FontSize="20">Ответы на вопросы</TextBlock>
+            <TextBlock FontSize="20">Ответы к вопросам</TextBlock>
           </Grid>
         </Button>
         <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
@@ -36,7 +36,7 @@
         <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Command="{Binding OpenPage}" CommandParameter="Tests">
           <Grid>
-            <TextBlock FontSize="20">Название тестов</TextBlock>
+            <TextBlock FontSize="20">Названия тестов</TextBlock>
           </Grid>
         </Button>
       </UniformGrid>

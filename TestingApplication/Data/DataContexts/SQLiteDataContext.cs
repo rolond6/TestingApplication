@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.Data.Entities;
+using TestingApplication.Data.Entities.Mapping;
 
 namespace TestingApplication.Data.DataContexts
 {
@@ -26,6 +27,16 @@ namespace TestingApplication.Data.DataContexts
         {
             optionsBuilder.UseSqlite("Data Source=TestingData.db");
             optionsBuilder.LogTo(SendMessage);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AnswerMap());
+            modelBuilder.ApplyConfiguration(new AnswerToQuestionMap());
+            modelBuilder.ApplyConfiguration(new QuestionMap());
+            modelBuilder.ApplyConfiguration(new QuestionsTypeMap());
+            modelBuilder.ApplyConfiguration(new TestMap());
+
         }
 
         private void SendMessage(string message)

@@ -4,13 +4,16 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using TestingApplication.Data.DataContexts;
 using TestingApplication.Data.Repositories.Interfaces;
-using TestingApplication.Data.Repositories.SQLite;
+using TestingApplication.Data.Repositories.DB;
 using TestingApplication.Helpers;
 using TestingApplication.ViewModels;
 using TestingApplication.ViewModels.Pages;
 using TestingApplication.ViewModels.Pages.Database.Viewers;
 using TestingApplication.Views;
+using TestingApplication.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestingApplication;
 
@@ -47,16 +50,22 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
 
+
         services.AddSingleton<HistoryRouter>(s => new(t => (ViewModelBase)s.GetRequiredService(t)));
 
-        // Репозитории
-        services.AddSingleton<IAnswersRepository, SQLiteAnswersRepository>();
-        services.AddSingleton<IAnswerToQuestionsRepository, SQLiteAnswerToQuestionsRepository>();
-        services.AddSingleton<IQuestionsRepository, SQLiteQuestionsRepository>();
-        services.AddSingleton<IQuestionsTypesRepository, SQLiteQuestionsTypesRepository>();
+        // База данных и репозитории
+        services.AddScoped<DbContext,SQLiteDataContext>();
+        services.AddSingleton<IAnswersRepository, DbAnswersRepository>();
+        services.AddSingleton<IAnswerToQuestionsRepository, DbAnswerToQuestionsRepository>();
+        services.AddSingleton<IQuestionsRepository, DbQuestionsRepository>();
+        services.AddSingleton<ITestsRepository, DbTestsRepository>();
+        services.AddSingleton<IQuestionsTypesRepository, DbQuestionsTypesRepository>();
 
         // Модели
-
+        services.AddSingleton<AnswersModel>();
+        services.AddSingleton<AnswerToQuestionsModel>();
+        services.AddSingleton<QuestionsModel>();
+        services.AddSingleton<TestsModel>();
 
         // Главное окно
         services.AddSingleton<MainViewModel>();

@@ -7,7 +7,7 @@ using TestingApplication.Data.Entities;
 
 namespace TestingApplication.Data.Repositories.Interfaces
 {
-    internal interface IAnswersRepository: IBaseRepository<Answer>
+    internal interface IAnswersRepository: IGenericRepository<Answer>
     {
     }
 }
