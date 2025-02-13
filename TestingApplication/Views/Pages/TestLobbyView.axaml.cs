@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace TestingApplication.Views.Pages
 {
-    public partial class DatabaseView : UserControl
+    public partial class TestLobbyView : UserControl
     {
-        public DatabaseView()
+        public TestLobbyView()
         {
             InitializeComponent();
         }

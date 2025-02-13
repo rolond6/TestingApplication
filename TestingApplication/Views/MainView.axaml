@@ -27,9 +27,9 @@
               <TextBlock Margin="10" Text="Главная"/>
             </StackPanel>
           </Button>
-          <Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="48" Background="Transparent" Command="{Binding OpenPage}" CommandParameter="Database">
+          <Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="48" Background="Transparent" Command="{Binding OpenPage}" CommandParameter="TestLobby">
             <StackPanel Orientation="Horizontal">
-              <TextBlock Margin="10" Text="База данных"/>
+              <TextBlock Margin="10" Text="Тесты"/>
             </StackPanel>
           </Button>
         </StackPanel>

@@ -20,13 +20,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="9.0.2" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\Pages\Database\Editors\" />
-    <Folder Include="Views\Pages\Database\Editors\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Pages\Database\Viewers\AnswersView.axaml" />
-  </ItemGroup>
 </Project>

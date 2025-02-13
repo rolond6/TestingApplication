@@ -10,10 +10,10 @@ using TestingApplication.Data.Repositories.DB;
 using TestingApplication.Helpers;
 using TestingApplication.ViewModels;
 using TestingApplication.ViewModels.Pages;
-using TestingApplication.ViewModels.Pages.Database.Viewers;
 using TestingApplication.Views;
 using TestingApplication.Models;
 using Microsoft.EntityFrameworkCore;
+using TestingApplication.ViewModels.Pages.Constructor;
 
 namespace TestingApplication;
 
@@ -72,11 +72,7 @@ public partial class App : Application
 
         // Модели предствления
         services.AddTransient<HomeViewModel>();
-        services.AddTransient<DatabaseViewModel>();
-        services.AddTransient<AnswersViewModel>();
-        services.AddTransient<QuestionsViewModel>();
-        services.AddTransient<TestsViewModel>();
-        services.AddTransient<AnswerToQuestionsViewModel>();
+        services.AddTransient<TestLobbyViewModel>();
 
         return services.BuildServiceProvider();
     }
