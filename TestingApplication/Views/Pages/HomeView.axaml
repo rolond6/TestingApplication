@@ -17,9 +17,9 @@
       </Label>
       <UniformGrid Grid.Row="1" Columns="4" Rows="4">
         <Button Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                Command="{Binding OpenPage}" CommandParameter="Database">
+                Command="{Binding OpenPage}" CommandParameter="TestLobby">
           <Grid>
-            <TextBlock FontSize="20">База данных</TextBlock>
+            <TextBlock FontSize="20">Список тестов</TextBlock>
           </Grid>
         </Button>
       </UniformGrid>
