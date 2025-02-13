@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.ViewModels;
 
-namespace TestingApplication.Helpers
+namespace TestingApplication.Helpers.Route.Routers
 {
     public class Router
     {
-        private Routes _routes;
+        private RouteDirectory _routes;
         private ViewModelBase _currentViewModel = default!;
         protected readonly Func<Type, ViewModelBase> CreateViewModel;
         public event Action<ViewModelBase>? CurrentViewModelChanged;
 
         public Router(Func<Type, ViewModelBase> createViewModel)
         {
-            _routes = new Routes();
-            _routes.RegisterByViewModelBase();
+            _routes = new RouteDirectory();
+            ViewModelRouter.RegisterViewModels(_routes);
 
             CreateViewModel = createViewModel;
         }
@@ -46,7 +46,7 @@ namespace TestingApplication.Helpers
 
         public virtual ViewModelBase GoTo(string name)
         {
-            Type type = _routes.GetViewModel(name);
+            Type type = _routes.Get(name);
             var viewModel = InstantiateViewModel(type);
             CurrentViewModel = viewModel;
             return viewModel;

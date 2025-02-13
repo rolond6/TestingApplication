@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.ViewModels;
 
-namespace TestingApplication.Helpers
+namespace TestingApplication.Helpers.Route.Routers
 {
     public class HistoryRouter : Router
     {
