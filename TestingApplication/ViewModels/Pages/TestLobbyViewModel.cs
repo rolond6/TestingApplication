@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using TestingApplication.Data.Entities;
 using TestingApplication.Data.Entities.Interfaces;
 using TestingApplication.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TestingApplication.ViewModels.Pages
 {

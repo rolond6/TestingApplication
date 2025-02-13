@@ -10,6 +10,7 @@ namespace TestingApplication.Services.Session
 {
     internal class LocalTestSession: ITestSession
     {
+        // TODO ** Реализовать возможность выбора вариантов ответа и хранения выбранных ответов
         private Test? _test;
 
         private int _currentQuestionIndex;
@@ -46,6 +47,7 @@ namespace TestingApplication.Services.Session
                 if (_currentQuestionIndex < _questions.Count - 1)
                 {
                     _currentQuestion = _questions[++_currentQuestionIndex];
+                    GetTestAnswers(_currentQuestion);
                 }
             }
         }
@@ -57,6 +59,7 @@ namespace TestingApplication.Services.Session
                 if (_currentQuestionIndex > 0)
                 {
                     _currentQuestion = _questions[--_currentQuestionIndex];
+                    GetTestAnswers(_currentQuestion);
                 }
             }
         }
@@ -74,6 +77,11 @@ namespace TestingApplication.Services.Session
         private List<Question> GetTestQuestions(Test test)
         {
             return new(_questionsRepository.GetAll(p => p.TestId == test.Id));
+        }
+        private List<Answer> GetTestAnswers(Question question)
+        {
+            // TODO ** Реализовать подгрузку ответов на вопросы
+            return new List<Answer>();
         }
 
         enum Mode

@@ -32,21 +32,21 @@ namespace TestingApplication.Models
         public async Task StartTest(Test test)
         {
             if (_session != null)
-                _session.Start(test);
+                await Task.Run(() => _session.Start(test));
         }
         public async Task CreateTest()
         {
             if (_session != null)
-                _session.Start(new Test(), true);
+                await Task.Run(() => _session.Start(new Test(), true));
         }
         public async Task EditTest(Test test)
         {
             if (_session != null)
-                _session.Start(test, true);
+                await Task.Run(() => _session.Start(test, true));
         }
         public async Task DeleteTest(Test test)
         {
-
+            //TODO * Реализовать удаление данных
         }
     }
 }
