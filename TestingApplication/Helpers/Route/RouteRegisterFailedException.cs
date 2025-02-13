@@ -20,9 +20,5 @@ namespace TestingApplication.Helpers.Route
         public RouteRegisterFailedException(string? message, Exception? innerException) : base(message, innerException)
         {
         }
-
-        protected RouteRegisterFailedException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
     }
 }

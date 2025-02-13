@@ -13,6 +13,7 @@ using TestingApplication.ViewModels.Pages;
 using TestingApplication.Views;
 using TestingApplication.Models;
 using Microsoft.EntityFrameworkCore;
+using TestingApplication.Services.Session;
 
 namespace TestingApplication;
 
@@ -60,11 +61,11 @@ public partial class App : Application
         services.AddSingleton<ITestsRepository, DbTestsRepository>();
         services.AddSingleton<IQuestionsTypesRepository, DbQuestionsTypesRepository>();
 
+        // Сервисы
+        services.AddSingleton<ITestSession, LocalTestSession>();
+
         // Модели
-        services.AddSingleton<AnswersModel>();
-        services.AddSingleton<AnswerToQuestionsModel>();
-        services.AddSingleton<QuestionsModel>();
-        services.AddSingleton<TestsModel>();
+        services.AddSingleton<TestLobbyModel>();
 
         // Главное окно
         services.AddSingleton<MainViewModel>();
