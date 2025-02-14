@@ -14,6 +14,7 @@ using TestingApplication.Views;
 using TestingApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using TestingApplication.Services.Session;
+using TestingApplication.ViewModels.Pages.Viewer;
 
 namespace TestingApplication;
 

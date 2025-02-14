@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.Data.Entities;
 using TestingApplication.Data.Entities.Interfaces;
+using TestingApplication.Helpers.Route.Routers;
 using TestingApplication.Models;
 
 namespace TestingApplication.ViewModels.Pages
 {
     internal class TestLobbyViewModel: ViewModelBase
     {
+        private HistoryRouter? _router;
         private TestLobbyModel _model;
         private ObservableCollection<Test> _tests;
 
@@ -40,8 +42,9 @@ namespace TestingApplication.ViewModels.Pages
             DeleteCommand = ReactiveCommand.CreateFromTask<Test?>(ExecuteDeleteCommand);
         }
 
-        public TestLobbyViewModel(TestLobbyModel model) : this()
+        public TestLobbyViewModel(HistoryRouter? router, TestLobbyModel model) : this()
         {
+            _router = router;
             _model = model;
         }
 
@@ -52,19 +55,32 @@ namespace TestingApplication.ViewModels.Pages
 
         private async Task ExecuteGoCommand(Test? test)
         {
-            if (test !=null)
+            if (test != null)
+            {
                 await _model.StartTest(test);
+
+                if (_router != null)
+                    _router.GoTo("Test");
+            }
         }
 
         private async Task ExecuteCreateCommand()
         {
             await _model.CreateTest();
+
+            if (_router!=null)
+                _router.GoTo("Test");
         }
 
         private async Task ExecuteEditCommand(Test? test)
         {
             if (test != null)
+            {
                 await _model.EditTest(test);
+
+                if (_router != null)
+                    _router.GoTo("Test");
+            }
         }
 
         private async Task ExecuteDeleteCommand(Test? test)

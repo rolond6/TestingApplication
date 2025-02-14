@@ -13,10 +13,10 @@ namespace TestingApplication.Models
     internal class TestLobbyModel
     {
         private ITestsRepository? _repository;
-        private LocalTestSession? _session;
+        private ITestSession? _session;
 
         public TestLobbyModel() { }
-        public TestLobbyModel(ITestsRepository repository, LocalTestSession session)
+        public TestLobbyModel(ITestsRepository repository, ITestSession session)
         {
             _repository = repository;
             _session = session;

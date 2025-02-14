@@ -24,13 +24,29 @@
           <TextBlock VerticalAlignment="Center" Text="Список тестов" FontSize="24"/>
         </StackPanel>
       </Label>
-      <ListBox Grid.Row="1">
+      <ListBox Grid.Row="1" Margin="4" CornerRadius="4"
+               x:Name="list" ItemsSource="{Binding Tests}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <TextBlock Text="{Binding Name}" FontSize="16" />
+            </StackPanel>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
       </ListBox>
       <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-        <Button>Пройти тестирование</Button>
-        <Button>Создать</Button>
-        <Button>Изменить</Button>
-        <Button>Удалить</Button>
+        <Button Command="{Binding GoCommand}" CommandParameter="{Binding SelectedItem, ElementName=list}">
+          Пройти тестирование
+        </Button>
+        <Button Command="{Binding CreateCommand}">
+          Создать
+        </Button>
+        <Button Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=list}">
+          Изменить
+        </Button>
+        <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedItem, ElementName=list}">
+          Удалить
+        </Button>
       </StackPanel>
     </Grid>
   </Grid>
