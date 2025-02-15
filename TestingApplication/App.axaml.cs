@@ -2,9 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using TestingApplication.Data.DataContexts;
 using TestingApplication.Data.Repositories.Interfaces;
 using TestingApplication.Data.Repositories.DB;
 using TestingApplication.Helpers.Route.Routers;
@@ -12,10 +10,11 @@ using TestingApplication.ViewModels;
 using TestingApplication.ViewModels.Pages;
 using TestingApplication.Views;
 using TestingApplication.Models;
-using Microsoft.EntityFrameworkCore;
 using TestingApplication.Services.Session;
-using TestingApplication.ViewModels.Pages.Viewer;
 using TestingApplication.ViewModels.Pages.Testing;
+using Microsoft.Extensions.DependencyInjection;
+using TestingApplication.Data.DataContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestingApplication;
 
@@ -58,7 +57,7 @@ public partial class App : Application
         // База данных и репозитории
         services.AddScoped<DbContext,SQLiteDataContext>();
         services.AddSingleton<IAnswersRepository, DbAnswersRepository>();
-        services.AddSingleton<IAnswerToQuestionsRepository, DbAnswerToQuestionsRepository>();
+        services.AddSingleton<IAnswerQuestionRepository, DbAnswerQuestionRepository>();
         services.AddSingleton<IQuestionsRepository, DbQuestionsRepository>();
         services.AddSingleton<ITestsRepository, DbTestsRepository>();
         services.AddSingleton<IQuestionsTypesRepository, DbQuestionsTypesRepository>();

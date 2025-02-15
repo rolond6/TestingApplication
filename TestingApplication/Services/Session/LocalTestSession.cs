@@ -20,11 +20,11 @@ namespace TestingApplication.Services.Session
         private Mode _mode;
 
         private IAnswersRepository _answersRepository;
-        private IAnswerToQuestionsRepository _answersToQuestionsRepository;
+        private IAnswerQuestionRepository _answersToQuestionsRepository;
         private IQuestionsRepository _questionsRepository;
         private IQuestionsTypesRepository _questionsTypesRepository;
 
-        public LocalTestSession(IAnswersRepository answersRepository, IAnswerToQuestionsRepository answersToQuestionsRepository, IQuestionsRepository questionsRepository, IQuestionsTypesRepository questionsTypesRepository)
+        public LocalTestSession(IAnswersRepository answersRepository, IAnswerQuestionRepository answersToQuestionsRepository, IQuestionsRepository questionsRepository, IQuestionsTypesRepository questionsTypesRepository)
         {
             _answersRepository = answersRepository;
             _answersToQuestionsRepository = answersToQuestionsRepository;
