@@ -15,6 +15,7 @@ using TestingApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using TestingApplication.Services.Session;
 using TestingApplication.ViewModels.Pages.Viewer;
+using TestingApplication.ViewModels.Pages.Testing;
 
 namespace TestingApplication;
 
@@ -74,6 +75,9 @@ public partial class App : Application
         // Модели предствления
         services.AddTransient<HomeViewModel>();
         services.AddTransient<TestLobbyViewModel>();
+        services.AddTransient<TestViewModel>();
+        services.AddTransient<QuestionViewModel>();
+        services.AddTransient<ResultViewModel>();
 
         return services.BuildServiceProvider();
     }
