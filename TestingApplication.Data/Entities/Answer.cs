@@ -19,6 +19,6 @@ namespace TestingApplication.Data.Entities
         public string Name { get => _name; set => _name = value; }
         public string? Description { get => _description; set => _description = value; }
 
-        public virtual ICollection<AnswerQuestion> AnswerToQuestions { get; set; }
+        public virtual ICollection<AnswerQuestion> AnswerQuestions { get; set; }
     }
 }

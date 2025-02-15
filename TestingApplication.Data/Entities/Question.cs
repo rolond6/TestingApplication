@@ -20,6 +20,6 @@ namespace TestingApplication.Data.Entities
         public int? TypeId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public virtual QuestionsType Type { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public virtual ICollection<AnswerQuestion> AnswersFromQuestion { get; set; }
+        public virtual ICollection<AnswerQuestion> AnswerQuestions { get; set; }
     }
 }

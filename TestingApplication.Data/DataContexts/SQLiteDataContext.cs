@@ -31,7 +31,7 @@ namespace TestingApplication.Data.DataContexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AnswerMap());
-            modelBuilder.ApplyConfiguration(new AnswerToQuestionMap());
+            modelBuilder.ApplyConfiguration(new AnswerQuestionMap());
             modelBuilder.ApplyConfiguration(new QuestionMap());
             modelBuilder.ApplyConfiguration(new QuestionsTypeMap());
             modelBuilder.ApplyConfiguration(new TestMap());

@@ -13,9 +13,9 @@ namespace TestingApplication.Data.Entities
     {
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public int? QuestionID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int? QuestionId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public virtual Question Question { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int? AnswerID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int? AnswerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public virtual Answer Answer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool IsTrue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
