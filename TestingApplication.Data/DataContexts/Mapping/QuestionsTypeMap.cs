@@ -18,6 +18,8 @@ namespace TestingApplication.Data.DataContexts.Mapping
 
             builder.HasAlternateKey(t => t.Name);
 
+            builder.Property(t => t.Id).HasColumnType("BLOB");
+
             builder.Property(t => t.Name).HasMaxLength(64);
         }
     }

@@ -10,7 +10,7 @@ namespace TestingApplication.Data.Entities.Interfaces
     {
         string Name { get; set; }
         string Description { get; set; }
-        int? TestId { get; set; }
-        int? TypeId { get; set; }
+        byte[]? TestId { get; set; }
+        byte[]? TypeId { get; set; }
     }
 }

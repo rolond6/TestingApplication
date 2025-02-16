@@ -33,14 +33,14 @@ namespace TestingApplication.Data.Repositories.DB
             {
                 IDictionary<Answer, bool> keyValues = new Dictionary<Answer, bool>();
 
-                Question? findedQuestion = _dbSetQuestions.Find(question.Id);
+                Question? findedQuestion = _dbSetQuestions.FirstOrDefault(t => t.Id == question.Id);
                 if (findedQuestion != null)
                 {
                     foreach (var answerQuestion in _dbSetGeneric.Where(t => t.QuestionId == findedQuestion.Id))
                     {
                         if (answerQuestion != null)
                         {
-                            Answer? findedAnswer = _dbSetAnswers.Find(answerQuestion.AnswerId);
+                            Answer? findedAnswer = _dbSetAnswers.FirstOrDefault(t => t.Id == answerQuestion.AnswerId);
                             if (findedAnswer != null)
                             {
                                 keyValues.Add(findedAnswer, answerQuestion.IsTrue);
@@ -63,9 +63,9 @@ namespace TestingApplication.Data.Repositories.DB
             {
                 try
                 {
-                    Answer? findedAnswer = _dbSetAnswers.Find(answer.Name);
+                    Answer? findedAnswer = _dbSetAnswers.Find(answer.Id);
 
-                    Question? findedQuestion = _dbSetQuestions.Find(question.Name);
+                    Question? findedQuestion = _dbSetQuestions.Find(question.Id);
 
                     if (findedAnswer != null && findedQuestion != null)
                     {

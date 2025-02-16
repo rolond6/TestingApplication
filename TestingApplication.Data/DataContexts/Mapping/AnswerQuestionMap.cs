@@ -18,8 +18,9 @@ namespace TestingApplication.Data.DataContexts.Mapping
             builder.HasOne(t => t.Answer).WithMany(t => t.AnswerQuestions).HasForeignKey(t => t.AnswerId);
             builder.HasOne(t => t.Question).WithMany(t => t.AnswerQuestions).HasForeignKey(t => t.QuestionId);
 
-            builder.HasIndex(t => new { t.AnswerId, t.QuestionId });
             builder.HasAlternateKey(t => new { t.AnswerId, t.QuestionId });
+
+            builder.Property(t => t.Id).HasColumnType("BLOB");
 
             builder.Property(t => t.IsTrue).HasDefaultValue(false);
         }

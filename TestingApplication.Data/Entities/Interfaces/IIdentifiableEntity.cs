@@ -8,6 +8,6 @@ namespace TestingApplication.Data.Entities.Interfaces
 {
     public interface IIdentifiableEntity
     {
-        int Id { get; set; }
+        byte[] Id { get; set; }
     }
 }

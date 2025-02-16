@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MassTransit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -10,11 +11,14 @@ namespace TestingApplication.Data.Entities
 {
     public abstract class BaseEntity: IIdentifiableEntity
     {
-        private int _id;
+        private byte[] _id;
 
-        public int Id { get => _id; set => _id = value; }
-        public BaseEntity() { }
-        public BaseEntity(int id) 
+        public byte[] Id { get => _id; set => _id = value; }
+        public BaseEntity() 
+        {
+            _id = NewId.NextGuid().ToByteArray();
+        }
+        public BaseEntity(byte[] id) 
         {
             _id = id;
         }

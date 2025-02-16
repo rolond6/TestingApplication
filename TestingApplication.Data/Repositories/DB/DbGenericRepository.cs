@@ -22,7 +22,7 @@ namespace TestingApplication.Data.Repositories.DB
             _dbSet = _dbContext.Set<TEntity>();
         }
 
-        public TEntity? Add(TEntity entity)
+        public virtual TEntity? Add(TEntity entity)
         {
             using (var transaction = _dbContext.Database.BeginTransaction())
             {
@@ -45,12 +45,12 @@ namespace TestingApplication.Data.Repositories.DB
             }
         }
 
-        public TEntity? Get(long id)
+        public virtual TEntity? Get(long id)
         {
             return _dbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace TestingApplication.Data.Repositories.DB
             }
         }
 
-        public IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate)
+        public virtual IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace TestingApplication.Data.Repositories.DB
             }
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
             using (var transaction = _dbContext.Database.BeginTransaction())
             {
@@ -96,7 +96,7 @@ namespace TestingApplication.Data.Repositories.DB
             }
         }
 
-        public void Edit(TEntity entity)
+        public virtual void Edit(TEntity entity)
         {
             using (var transaction = _dbContext.Database.BeginTransaction())
             {

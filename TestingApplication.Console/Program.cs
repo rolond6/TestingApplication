@@ -8,7 +8,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        
         using (var dataContext = new SQLiteDataContext())
         {
             IAnswersRepository answersRepository = new DbAnswersRepository(dataContext);
@@ -24,8 +23,6 @@ internal class Program
             {
                 Console.WriteLine(ex.Message);
             }
-            Console.WriteLine(answersRepository.GetAll());
-            Console.WriteLine(answersRepository.GetAll().Count());
         }
 
         using (var dataContext = new SQLiteDataContext())
@@ -40,8 +37,6 @@ internal class Program
             {
                 Console.WriteLine(ex.Message);
             }
-            Console.WriteLine(questionsRepository.GetAll());
-            Console.WriteLine(questionsRepository.GetAll().Count());
         }
 
         using (var dataContext = new SQLiteDataContext())
@@ -78,7 +73,7 @@ internal class Program
             {
                 foreach (var keyPairs in answerQuestionRepository.GetAnswersFromQuestion(question))
                 {
-                    Console.WriteLine(keyPairs.Key.Name + " | Правильный: " + keyPairs.Value);
+                    Console.WriteLine(new Guid(keyPairs.Key.Id) + " | " + keyPairs.Key.Name + " | Правильный: " + keyPairs.Value);
                 }
             }
             Console.ReadLine();
