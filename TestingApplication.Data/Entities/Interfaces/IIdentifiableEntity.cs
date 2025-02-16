@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestingApplication.Data.Entities.Interfaces
 {
-    public interface IAnswer : IIdentifiableEntity
+    public interface IIdentifiableEntity
     {
-        string Name { get; set; }
-        string? Description { get; set; }
-
+        int Id { get; set; }
     }
 }

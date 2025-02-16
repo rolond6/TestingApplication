@@ -6,17 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.Data.Entities.Interfaces;
+using System.Security.Cryptography;
 
 namespace TestingApplication.Data.Entities
 {
-    public class AnswerQuestion : IAnswerQuestion
+    public class AnswerQuestion : BaseEntity, IAnswerQuestion
     {
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private int? _questionId;
+        private Question _question;
+        private Answer _answer;
+        private int? _answerId;
+        private bool _isTrue;
 
-        public int? QuestionId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public virtual Question Question { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int? AnswerId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public virtual Answer Answer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsTrue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int? QuestionId { get => _questionId; set => _questionId = value; }
+        public virtual Question Question { get => _question; set => _question = value; }
+        public int? AnswerId { get => _answerId; set => _answerId = value; }
+        public virtual Answer Answer { get => _answer; set => _answer = value; }
+        public bool IsTrue { get => _isTrue; set => _isTrue = value; }
     }
 }

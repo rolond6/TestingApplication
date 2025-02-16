@@ -9,10 +9,8 @@ using TestingApplication.Data.Entities.Interfaces;
 
 namespace TestingApplication.Data.Entities
 {
-    public class Test : ITest
+    public class Test : BaseEntity, ITest
     {
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Timer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

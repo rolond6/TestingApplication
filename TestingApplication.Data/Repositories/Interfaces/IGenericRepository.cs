@@ -31,12 +31,12 @@ namespace TestingApplication.Data.Repositories.Interfaces
         /// </summary>
         /// <param name="entity">Создаваемая сущность</param>
         /// <returns>Возращает создаваемую сущность</returns>
-        TEntity? Create(TEntity entity);
+        TEntity? Add(TEntity entity);
         /// <summary>
         /// Обновить сущность
         /// </summary>
         /// <param name="entity">Обновляемая сущность</param>
-        void Update(TEntity entity);
+        void Edit(TEntity entity);
 
         /// <summary>
         /// Удалить сущность

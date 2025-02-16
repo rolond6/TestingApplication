@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.Data.Entities;
+using TestingApplication.Data.Repositories.Exceptions;
 using TestingApplication.Data.Repositories.Interfaces;
 
 namespace TestingApplication.Data.Repositories.DB
 {
-    public class DbGenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class DbGenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
         protected DbContext _dbContext;
 
@@ -21,11 +22,27 @@ namespace TestingApplication.Data.Repositories.DB
             _dbSet = _dbContext.Set<TEntity>();
         }
 
-        public TEntity? Create(TEntity entity)
+        public TEntity? Add(TEntity entity)
         {
-            _dbSet.Add(entity);
-            _dbContext.SaveChanges();
-            return entity;
+            using (var transaction = _dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    _dbSet.Add(entity);
+                    _dbContext.SaveChanges();
+                    transaction.Commit();
+                    return _dbSet.Find(entity.Id);
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new AddFailedRepositoryException("Произошла ошибка при добавлении записи", ex);
+                }
+                finally
+                {
+                    _dbContext.ChangeTracker.Clear();
+                }
+            }
         }
 
         public TEntity? Get(long id)
@@ -35,24 +52,70 @@ namespace TestingApplication.Data.Repositories.DB
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _dbSet.AsNoTracking().ToList();
+            try
+            {
+                return _dbSet.AsNoTracking().ToList();
+            }
+            catch
+            {
+                throw new GetFailedRepositoryException();
+            }
         }
 
         public IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate)
         {
-            return _dbSet.AsNoTracking().Where(predicate).ToList();
+            try
+            {
+                return _dbSet.AsNoTracking().Where(predicate).ToList();
+            }
+            catch
+            {
+                throw new GetFailedRepositoryException();
+            }
         }
 
         public void Remove(TEntity entity)
         {
-            _dbSet.Remove(entity);
-            _dbContext.SaveChanges();
+            using (var transaction = _dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    _dbSet.Remove(entity);
+                    _dbContext.SaveChanges();
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw new RemoveFailedRepositoryException();
+                }
+                finally
+                {
+                    _dbContext.ChangeTracker.Clear();
+                }
+            }
         }
 
-        public void Update(TEntity entity)
+        public void Edit(TEntity entity)
         {
-            _dbSet.Update(entity);
-            _dbContext.SaveChanges();
+            using (var transaction = _dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    _dbSet.Update(entity);
+                    _dbContext.SaveChanges();
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw new RemoveFailedRepositoryException();
+                }
+                finally
+                {
+                    _dbContext.ChangeTracker.Clear();
+                }
+            }
         }
     }
 }

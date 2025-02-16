@@ -6,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.Data.Entities.Interfaces;
+using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace TestingApplication.Data.Entities
 {
-    public class QuestionsType : IQuestionsType
+    public class QuestionsType : BaseEntity, IQuestionsType
     {
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private string _name;
+        public string Name { get => _name; set => _name = value; }
 
         public virtual ICollection<Question> Questions { get; set; }
     }
