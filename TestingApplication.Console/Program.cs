@@ -21,7 +21,6 @@ internal class Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
             }
         }
 
@@ -35,7 +34,6 @@ internal class Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
             }
         }
 
@@ -60,7 +58,6 @@ internal class Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
             }
         }
 

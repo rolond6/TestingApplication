@@ -22,26 +22,17 @@ namespace TestingApplication.Data.Repositories.DB
             _dbSet = _dbContext.Set<TEntity>();
         }
 
-        public virtual TEntity? Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
-            using (var transaction = _dbContext.Database.BeginTransaction())
+            try
             {
-                try
-                {
-                    _dbSet.Add(entity);
-                    _dbContext.SaveChanges();
-                    transaction.Commit();
-                    return _dbSet.Find(entity.Id);
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    throw new AddFailedRepositoryException("Произошла ошибка при добавлении записи", ex);
-                }
-                finally
-                {
-                    _dbContext.ChangeTracker.Clear();
-                }
+                _dbSet.Add(entity);
+                _dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _dbContext.ChangeTracker.Clear();
+                throw new AddFailedRepositoryException("Произошла ошибка при добавлении записи", ex);
             }
         }
 
@@ -76,45 +67,29 @@ namespace TestingApplication.Data.Repositories.DB
 
         public virtual void Remove(TEntity entity)
         {
-            using (var transaction = _dbContext.Database.BeginTransaction())
+            try
             {
-                try
-                {
-                    _dbSet.Remove(entity);
-                    _dbContext.SaveChanges();
-                    transaction.Commit();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    throw new RemoveFailedRepositoryException();
-                }
-                finally
-                {
-                    _dbContext.ChangeTracker.Clear();
-                }
+                _dbSet.Remove(entity);
+                _dbContext.SaveChanges();
+            }
+            catch
+            {
+                _dbContext.ChangeTracker.Clear();
+                throw new RemoveFailedRepositoryException();
             }
         }
 
         public virtual void Edit(TEntity entity)
         {
-            using (var transaction = _dbContext.Database.BeginTransaction())
+            try
             {
-                try
-                {
-                    _dbSet.Update(entity);
-                    _dbContext.SaveChanges();
-                    transaction.Commit();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    throw new RemoveFailedRepositoryException();
-                }
-                finally
-                {
-                    _dbContext.ChangeTracker.Clear();
-                }
+                _dbSet.Update(entity);
+                _dbContext.SaveChanges();
+            }
+            catch
+            {
+                _dbContext.ChangeTracker.Clear();
+                throw new RemoveFailedRepositoryException();
             }
         }
     }

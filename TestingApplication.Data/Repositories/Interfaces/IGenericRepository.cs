@@ -31,7 +31,7 @@ namespace TestingApplication.Data.Repositories.Interfaces
         /// </summary>
         /// <param name="entity">Создаваемая сущность</param>
         /// <returns>Возращает создаваемую сущность</returns>
-        TEntity? Add(TEntity entity);
+        void Add(TEntity entity);
         /// <summary>
         /// Обновить сущность
         /// </summary>

@@ -77,19 +77,16 @@ namespace TestingApplication.Data.Repositories.DB
                             answerQuestion.QuestionId = findedQuestion.Id;
                             answerQuestion.IsTrue = is_true;
                             _dbSetGeneric.Add(answerQuestion);
+                            _dbContext.SaveChanges();
+                            transaction.Commit();
                         }
                     }
-                    _dbContext.SaveChanges();
-                    transaction.Commit();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    throw new AddFailedRepositoryException("Произошла ошибка при добавлении записи", ex);
-                }
-                finally
-                {
                     _dbContext.ChangeTracker.Clear();
+                    throw new AddFailedRepositoryException("Произошла ошибка при добавлении записи", ex);
                 }
             }
         }
@@ -115,19 +112,16 @@ namespace TestingApplication.Data.Repositories.DB
                             answerQuestion.IsTrue = is_true;
 
                             _dbSetGeneric.Update(answerQuestion);
+                            _dbContext.SaveChanges();
+                            transaction.Commit();
                         }
                     }
-                    _dbContext.SaveChanges();
-                    transaction.Commit();
                 }
                 catch
                 {
                     transaction.Rollback();
-                    throw new EditFailedRepositoryException();
-                }
-                finally
-                {
                     _dbContext.ChangeTracker.Clear();
+                    throw new EditFailedRepositoryException();
                 }
             }
         }
@@ -147,19 +141,16 @@ namespace TestingApplication.Data.Repositories.DB
                         if (answerQuestion != null)
                         {
                             _dbSetGeneric.Remove(answerQuestion);
+                            _dbContext.SaveChanges();
+                            transaction.Commit();
                         }
                     }
-                    _dbContext.SaveChanges();
-                    transaction.Commit();
                 }
                 catch
                 {
                     transaction.Rollback();
-                    throw new RemoveFailedRepositoryException();
-                }
-                finally
-                {
                     _dbContext.ChangeTracker.Clear();
+                    throw new RemoveFailedRepositoryException();
                 }
             }
         }

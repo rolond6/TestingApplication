@@ -13,7 +13,7 @@ namespace TestingApplication.Data.Entities
     {
         private byte[] _id;
 
-        public byte[] Id { get => _id; set => _id = value; }
+        public byte[] Id { get => _id; }
         public BaseEntity() 
         {
             _id = NewId.NextGuid().ToByteArray();
