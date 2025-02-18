@@ -13,10 +13,14 @@ namespace TestingApplication.Data.Entities
     {
         private string _name;
         private string? _description;
+        private int _questionId;
+        private Question _question;
+        private bool _isTrue;
 
         public string Name { get => _name; set => _name = value; }
         public string? Description { get => _description; set => _description = value; }
-
-        public virtual ICollection<AnswerQuestion> AnswerQuestions { get; set; }
+        public int QuestionId { get => _questionId; set => _questionId = value; }
+        public virtual Question Question { get => _question; set => _question = value; }
+        public bool IsTrue { get => _isTrue; set => _isTrue = value; }
     }
 }

@@ -13,7 +13,6 @@ namespace TestingApplication.Data.DataContexts
     public class SQLiteDataContext: DbContext
     {
         public DbSet<Answer> Answers { get; set; } = null!;
-        public DbSet<AnswerQuestion> AnswerQuestions { get; set; } = null!;
         public DbSet<Question> Questions { get; set; } = null!;
         public DbSet<Test> Tests { get; set; } = null!;
         public DbSet<QuestionsType> QuestionsTypes { get; set; } = null!;
@@ -31,7 +30,6 @@ namespace TestingApplication.Data.DataContexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AnswerMap());
-            modelBuilder.ApplyConfiguration(new AnswerQuestionMap());
             modelBuilder.ApplyConfiguration(new QuestionMap());
             modelBuilder.ApplyConfiguration(new QuestionsTypeMap());
             modelBuilder.ApplyConfiguration(new TestMap());

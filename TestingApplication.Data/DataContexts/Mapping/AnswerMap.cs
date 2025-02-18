@@ -16,12 +16,11 @@ namespace TestingApplication.Data.DataContexts.Mapping
             // Primary Key
             builder.HasKey(t => t.Id);
 
-            builder.HasAlternateKey(t => t.Name);
-
-            builder.Property(t => t.Id).HasColumnType("BLOB");
+            builder.HasOne(t => t.Question).WithMany(t => t.Answers).HasForeignKey(t => t.QuestionId);
 
             builder.Property(t => t.Name).HasMaxLength(255);
             builder.Property(t => t.Description).HasMaxLength(1024);
+            builder.Property(t => t.IsTrue).HasDefaultValue(false);
         }
     }
 }

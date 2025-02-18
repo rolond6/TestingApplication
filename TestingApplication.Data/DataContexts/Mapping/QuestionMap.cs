@@ -19,10 +19,6 @@ namespace TestingApplication.Data.DataContexts.Mapping
             builder.HasOne(t => t.Type).WithMany(t => t.Questions).HasForeignKey(t => t.TypeId);
             builder.HasOne(t => t.Test).WithMany(t => t.Questions).HasForeignKey(t => t.TestId);
 
-            builder.HasAlternateKey(t => t.Name);
-
-            builder.Property(t => t.Id).HasColumnType("BLOB");
-
             builder.Property(t => t.Name).HasMaxLength(255);
             builder.Property(t => t.Description).HasMaxLength(2048);
         }

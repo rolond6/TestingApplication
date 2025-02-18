@@ -16,10 +16,6 @@ namespace TestingApplication.Data.DataContexts.Mapping
             // Primary Key
             builder.HasKey(t => t.Id);
 
-            builder.HasAlternateKey(t => t.Name);
-
-            builder.Property(t => t.Id).HasColumnType("BLOB");
-
             builder.Property(t => t.Name).HasMaxLength(64);
         }
     }

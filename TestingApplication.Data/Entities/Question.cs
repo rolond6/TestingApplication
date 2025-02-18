@@ -16,18 +16,18 @@ namespace TestingApplication.Data.Entities
     {
         private string _name;
         private string _description;
-        private byte[]? _testId;
+        private int _testId;
         private Test _test;
-        private byte[]? _typeId;
+        private int _typeId;
         private QuestionsType _type;
 
         public string Name { get => _name; set => _name = value; }
         public string Description { get => _description; set => _description = value; }
-        public byte[]? TestId { get => _testId; set => _testId = value; }
+        public int TestId { get => _testId; set => _testId = value; }
         public virtual Test Test { get => _test; set => _test = value; }
-        public byte[]? TypeId { get => _typeId; set => _typeId = value; }
+        public int TypeId { get => _typeId; set => _typeId = value; }
         public virtual QuestionsType Type { get => _type; set => _type = value; }
 
-        public virtual ICollection<AnswerQuestion> AnswerQuestions { get; set; }
+        public virtual List<Answer> Answers { get; set; } = new();
     }
 }

@@ -11,14 +11,13 @@ namespace TestingApplication.Data.Entities
 {
     public abstract class BaseEntity: IIdentifiableEntity
     {
-        private byte[] _id;
+        private int _id;
 
-        public byte[] Id { get => _id; }
+        public int Id { get => _id; }
         public BaseEntity() 
         {
-            _id = NewId.NextGuid().ToByteArray();
         }
-        public BaseEntity(byte[] id) 
+        public BaseEntity(int id) 
         {
             _id = id;
         }

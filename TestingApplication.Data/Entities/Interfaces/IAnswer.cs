@@ -10,6 +10,7 @@ namespace TestingApplication.Data.Entities.Interfaces
     {
         string Name { get; set; }
         string? Description { get; set; }
-
+        bool IsTrue { get; set; }
+        int QuestionId { get; set; }
     }
 }

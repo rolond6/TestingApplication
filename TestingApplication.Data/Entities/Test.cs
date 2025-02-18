@@ -6,15 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingApplication.Data.Entities.Interfaces;
+using System.Xml.Linq;
 
 namespace TestingApplication.Data.Entities
 {
     public class Test : BaseEntity, ITest
     {
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Timer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private string _name;
+        private string? _description;
+        private int _timer;
 
-        public virtual ICollection<Question> Questions { get; set; }
+        public string Name { get => _name; set => _name = value; }
+        public string? Description { get => _description; set => _description = value; }
+        public int Timer { get => _timer; set => _timer = value; }
+
+        public virtual List<Question> Questions { get; set; } = new();
     }
 }

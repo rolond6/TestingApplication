@@ -16,6 +16,6 @@ namespace TestingApplication.Data.Entities
         private string _name;
         public string Name { get => _name; set => _name = value; }
 
-        public virtual ICollection<Question> Questions { get; set; }
+        public virtual List<Question> Questions { get; set; } = new();
     }
 }

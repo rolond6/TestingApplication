@@ -25,7 +25,7 @@ namespace TestingApplication.Data.Repositories.Interfaces
         /// </summary>
         /// <param name="id">Уникальный идентификатор</param>
         /// <returns>Возращает конкретную сущность</returns>
-        TEntity? Get(long id);
+        TEntity? Get(int id);
         /// <summary>
         /// Создать сущность
         /// </summary>

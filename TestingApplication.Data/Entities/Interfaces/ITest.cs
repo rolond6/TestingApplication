@@ -9,7 +9,7 @@ namespace TestingApplication.Data.Entities.Interfaces
     public interface ITest : IIdentifiableEntity
     {
         string Name { get; set; }
-        string Description { get; set; }
+        string? Description { get; set; }
         int Timer { get; set; }
     }
 }

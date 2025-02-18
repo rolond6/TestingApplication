@@ -36,7 +36,7 @@ namespace TestingApplication.Data.Repositories.DB
             }
         }
 
-        public virtual TEntity? Get(long id)
+        public virtual TEntity? Get(int id)
         {
             return _dbSet.Find(id);
         }

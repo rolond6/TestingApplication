@@ -9,8 +9,8 @@ namespace TestingApplication.Data.Entities.Interfaces
     public interface IQuestion : IIdentifiableEntity
     {
         string Name { get; set; }
-        string Description { get; set; }
-        byte[]? TestId { get; set; }
-        byte[]? TypeId { get; set; }
+        string? Description { get; set; }
+        int TestId { get; set; }
+        int TypeId { get; set; }
     }
 }
