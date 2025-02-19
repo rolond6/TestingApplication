@@ -16,11 +16,17 @@ namespace TestingApplication.Data.DataContexts
         public DbSet<Question> Questions { get; set; } = null!;
         public DbSet<Test> Tests { get; set; } = null!;
         public DbSet<QuestionsType> QuestionsTypes { get; set; } = null!;
-
+        
         public SQLiteDataContext()
         {
             Database.EnsureCreated();
         }
+
+        public static SQLiteDataContext Create()
+        {
+            return new SQLiteDataContext();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=TestingData.db");

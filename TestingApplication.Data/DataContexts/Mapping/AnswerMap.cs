@@ -20,7 +20,7 @@ namespace TestingApplication.Data.DataContexts.Mapping
 
             builder.Property(t => t.Name).HasMaxLength(255);
             builder.Property(t => t.Description).HasMaxLength(1024);
-            builder.Property(t => t.IsTrue).HasDefaultValue(false);
+            builder.Property(t => t.IsCorrect).HasDefaultValue(false);
         }
     }
 }

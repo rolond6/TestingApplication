@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestingApplication.Data.Entities.Interfaces
 {
-    public interface IAnswer : IIdentifiableEntity
+    public interface ICorrectAnswer: IAnswer
     {
-        string Name { get; set; }
-        string? Description { get; set; }
-        int QuestionId { get; set; }
+        bool IsCorrect { get; set; }
     }
 }

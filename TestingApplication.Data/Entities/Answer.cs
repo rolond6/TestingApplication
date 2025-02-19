@@ -9,18 +9,18 @@ using TestingApplication.Data.Entities.Interfaces;
 
 namespace TestingApplication.Data.Entities
 {
-    public class Answer : BaseEntity, IAnswer
+    public class Answer : BaseEntity, ICorrectAnswer
     {
         private string _name;
         private string? _description;
         private int _questionId;
-        private Question _question;
-        private bool _isTrue;
+        private Question? _question;
+        private bool _isCorrect;
 
         public string Name { get => _name; set => _name = value; }
         public string? Description { get => _description; set => _description = value; }
         public int QuestionId { get => _questionId; set => _questionId = value; }
-        public virtual Question Question { get => _question; set => _question = value; }
-        public bool IsTrue { get => _isTrue; set => _isTrue = value; }
+        public virtual Question? Question { get => _question; set => _question = value; }
+        public bool IsCorrect { get => _isCorrect; set => _isCorrect = value; }
     }
 }

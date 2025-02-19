@@ -14,6 +14,21 @@ namespace TestingApplication.Data.Entities
     public class QuestionsType : BaseEntity, IQuestionsType
     {
         private string _name;
+
+        public QuestionsType()
+        {
+            _name = "Классификация вопроса без имени";
+        }
+
+        public QuestionsType(int id, string name)
+        {
+            _id = id;
+            _name = name;
+        }
+
+        public static QuestionsType CHOICE_ONE = new QuestionsType(1, "Один правильный ответ");
+        public static QuestionsType CHOICE_MANY = new QuestionsType(2, "Несколько правильных ответов");
+
         public string Name { get => _name; set => _name = value; }
 
         public virtual List<Question> Questions { get; set; } = new();

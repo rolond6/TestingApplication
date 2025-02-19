@@ -11,9 +11,9 @@ namespace TestingApplication.Data.Entities
 {
     public abstract class BaseEntity: IIdentifiableEntity
     {
-        private int _id;
+        protected int _id;
 
-        public int Id { get => _id; }
+        public int Id { get => _id; internal set => _id = value; }
         public BaseEntity() 
         {
         }

@@ -52,7 +52,7 @@ namespace TestingApplication.Data.Repositories.DB
         {
             try
             {
-                return _dbSet.AsNoTracking().Where(predicate).ToList();
+                return _dbSet.AsNoTracking().Where(predicate);
             }
             catch (Exception ex)
             {
